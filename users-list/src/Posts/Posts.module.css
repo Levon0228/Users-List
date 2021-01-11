@@ -1,0 +1,16 @@
+/** @format */
+.postsContanier {
+  grid-area: pro;
+  width: 500px;
+}
+
+
+.post {
+  padding: 10px;
+  margin: 5px;
+  font-size: 16px;
+  border: 1px solid #c5c5c5;
+  color: rgb(38, 38, 38);
+}
+
+

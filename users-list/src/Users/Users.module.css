@@ -1,0 +1,26 @@
+/** @format */
+.usersContanier {
+    grid-area: pro;
+    width: 300px;
+  
+}
+.usersContanier a {
+
+  text-decoration: none;
+}
+
+.user {
+  padding: 10px;
+  margin: 5px;
+  font-size: 16px;
+  border: 1px solid #c5c5c5;
+  color: rgb(38, 38, 38);
+}
+
+.user:hover {
+  cursor: pointer;
+  color: black;
+  padding: 10px;
+  box-shadow: 1px 2px #888888;
+
+}
