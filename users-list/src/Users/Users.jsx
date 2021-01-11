@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import styles from "./Users.module.css";
 
 const Users = () => {
@@ -19,12 +19,11 @@ const Users = () => {
   if (load) {
     return (
       <div className={styles.usersContanier}>
-        <h1>Users List</h1>
+        <h1>Users</h1>
         {data.map((u) => (
-          <Link to={`/posts?userId=${u.id}`}>
-            <div key={u.id} className={styles.user}>{u.name}</div>
+          <Link to={`/posts?userId=${u.id}`} key={u.id}>
+            <div className={styles.user}>{u.name}</div>
           </Link>
-          
         ))}
       </div>
     );
@@ -34,7 +33,3 @@ const Users = () => {
 };
 
 export default Users;
-
-
-
-
