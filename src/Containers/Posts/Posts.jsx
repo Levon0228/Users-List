@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
 import styles from "./Posts.module.css";
-import { API_URL } from "../config/index";
+import { API_URL } from "../../config/index";
 
 const Posts = () => {
   const [posts, setPosts] = useState([]);

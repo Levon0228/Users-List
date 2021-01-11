@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import styles from "./Users.module.css";
-import { API_URL } from "../config/index";
+import { API_URL } from "../../config/index";
 
 const Users = () => {
   const [users, setUsers] = useState([]);
