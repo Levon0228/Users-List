@@ -10,8 +10,8 @@ function App() {
   return (
     <div className="App">
       <Switch>
-        <Route path="/users"> <Users/> </Route>
-        <Route path="/posts"> <Posts/> </Route>
+        <Route exact path="/users"> <Users/> </Route>
+        <Route exact path="/posts"> <Posts/> </Route>
       </Switch>
     </div>
   );

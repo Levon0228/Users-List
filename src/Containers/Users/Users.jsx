@@ -8,12 +8,10 @@ import { API_URL } from "../../config/index";
 
 const Users = () => {
   const [users, setUsers] = useState([]);
-  let [load, setLoad] = useState(false);
   useEffect(() => {
-    const fetchData = (async () => {
+    (async () => {
       const result = await axios(`${API_URL}/users`);
       setUsers(result.data);
-      setLoad(true);
     })();
   }, []);
   return (

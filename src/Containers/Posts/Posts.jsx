@@ -8,15 +8,13 @@ import { API_URL } from "../../config/index";
 
 const Posts = () => {
   const [posts, setPosts] = useState([]);
-  const [load, setLoad] = useState(false);
   const { search } = useLocation();
   useEffect(() => {
-    const fetchData = (async () => {
+    (async () => {
       const result = await axios(
         `${API_URL}/posts${search}`
       );
       setPosts(result.data);
-      setLoad(true);
     })();
   }, []);
   return (
