@@ -2,18 +2,22 @@
 
 import "./App.css";
 import { Route, Switch } from "react-router-dom";
-import React from "react";
-import Users from "./Containers/Users/Users";
-import Posts from "./Containers/Posts/Posts";
+import React, { useState } from "react";
+import { Context } from "./Context/Context";
+import UsersContanier from "./Containers/Users/UsersContanier";
+import PostsContanier from "./Containers/Posts/PostsContanier";
 
 function App() {
+  const [context, setContext] = useState({});
   return (
-    <div className="App">
-      <Switch>
-        <Route exact path="/users"> <Users/> </Route>
-        <Route exact path="/posts"> <Posts/> </Route>
-      </Switch>
-    </div>
+    <Context.Provider value={[context, setContext]}>
+      <div className="App">
+        <Switch>
+          <Route exact path="/users"> <UsersContanier/> </Route>
+          <Route exact path="/posts"> <PostsContanier/> </Route>
+        </Switch>
+      </div>
+    </Context.Provider>
   );
 }
 

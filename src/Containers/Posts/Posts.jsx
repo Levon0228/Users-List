@@ -1,28 +1,27 @@
 /** @format */
 
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { useLocation } from "react-router-dom";
+import React from "react";
+import Comments from "./Comments/Comments";
 import styles from "./Posts.module.css";
-import { API_URL } from "../../config/index";
+import ReactDOM from "react-dom";
 
-const Posts = () => {
-  const [posts, setPosts] = useState([]);
-  const { search } = useLocation();
-  useEffect(() => {
-    (async () => {
-      const result = await axios(
-        `${API_URL}/posts${search}`
-      );
-      setPosts(result.data);
-    })();
-  }, []);
+
+const Posts = (props) => {
+  const posts = props.posts;
+  const showComments = () => {
+    document.querySelector('#com').classList.toggle(styles.hide)
+  } 
+
   return (
-    <div className={styles.postsContanier}>
-      <h1>Posts List</h1>
+    <div id="postsContainer" className={styles.postsContanier}>
+      <h1> Posts List</h1>
       {posts.map((p) => (
-        <div key={p.id} className={styles.post}>
-          {p.body}
+        <div>
+          <div key={p.id} className={styles.post}>
+            {p.body}
+          </div>
+          <button onClick={(e) => showComments()}>Comments</button>
+          <Comments/>
         </div>
       ))}
     </div>
