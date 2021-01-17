@@ -7,6 +7,7 @@ import styles from "./Users.module.css";
 const Users = (props) => {
   const handleClick = (e, data) => props.setContext(data);
   const users = props.users;
+  console.log("users", users)
   return (
     <div className={styles.usersContanier}>
       <h1>Users</h1>

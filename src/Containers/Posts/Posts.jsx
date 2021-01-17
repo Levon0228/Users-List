@@ -1,27 +1,29 @@
 /** @format */
 
 import React from "react";
-import Comments from "./Comments/Comments";
+import CommentsContanier from "./Comments/CommentsContanier";
 import styles from "./Posts.module.css";
 import ReactDOM from "react-dom";
 
-
 const Posts = (props) => {
   const posts = props.posts;
-  const showComments = () => {
-    document.querySelector('#com').classList.toggle(styles.hide)
-  } 
+  let is
+  props.isShow ? is = false: is = true; 
+  console.log("is", is, props)
+  const showComments = (e) =>  props.setIsShow(is);
 
   return (
-    <div id="postsContainer" className={styles.postsContanier}>
+    <div id="postsContainer" className={styles.postsContanier} >
       <h1> Posts List</h1>
       {posts.map((p) => (
-        <div>
+        <div className="contanier">
           <div key={p.id} className={styles.post}>
             {p.body}
           </div>
-          <button onClick={(e) => showComments()}>Comments</button>
-          <Comments/>
+          <span className={styles.commentsBtn} onClick={(e) => showComments(e)}>
+            Comments
+          </span>
+          <CommentsContanier postId={p.id} isShow={props.isShow} />
         </div>
       ))}
     </div>
