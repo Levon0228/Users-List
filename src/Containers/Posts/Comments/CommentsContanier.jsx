@@ -10,22 +10,18 @@ import Comments from "./Comments";
 const CommentsContanier = (props) => {
   const [comments, setComments] = useState([]);
   //const [isShowComments, setShow] = useState(false)
-  const { search } = useLocation();
-  const context = props.isShow
-  console.log("inComentsCont" , props.postId)
  // if (context) setShow(context)
-  
+  console.log("postId", props.postId)
   
  useEffect(() => {
    (async () => {
      const result = await axios(`${API_URL}/comments?postId=${props.postId}`);
-     setComments(result.data);
+       setComments(result.data);
     })();
   }, []);
-  if (context) {
 
-      return <Comments comments={comments} />;
-    } else return <div></div>
+    return <Comments comments={comments} />;
+    
 
 };
 

@@ -12,7 +12,8 @@ const PostsContanier = () => {
   const { search } = useLocation();
  // const [context, setContext] = useContext(Context);
   //const userName = context.name;
-  const [isShow, setIsShow] = useState(false);
+  const [postId, setpostId] = useState(null);
+  const [isOpen, setisOpen] = useState(false);
 
 
 
@@ -22,9 +23,8 @@ const PostsContanier = () => {
       setPosts(result.data);
     })();
   }, []);
-  console.log("IN ")
   return (
-    <Posts posts={posts} isShow={isShow} setIsShow={setIsShow} />
+    <Posts posts={posts} isOpen={isOpen} setisOpen={setisOpen} setPosts={setPosts} postId={postId} setpostId={setpostId} />
   );
 };
 

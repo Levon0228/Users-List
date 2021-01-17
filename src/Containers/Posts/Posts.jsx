@@ -3,14 +3,17 @@
 import React from "react";
 import CommentsContanier from "./Comments/CommentsContanier";
 import styles from "./Posts.module.css";
-import ReactDOM from "react-dom";
 
 const Posts = (props) => {
   const posts = props.posts;
-  let is
-  props.isShow ? is = false: is = true; 
-  console.log("is", is, props)
-  const showComments = (e) =>  props.setIsShow(is);
+  let flag = props.isOpen ? false: true; 
+  console.log("flag", flag)
+  const showComments = (e) =>  {
+    const element = e.target
+    console.log("element.id", element.id )
+    props.setisOpen(flag)
+    props.setpostId(e.target.id);
+  } 
 
   return (
     <div id="postsContainer" className={styles.postsContanier} >
@@ -20,10 +23,10 @@ const Posts = (props) => {
           <div key={p.id} className={styles.post}>
             {p.body}
           </div>
-          <span className={styles.commentsBtn} onClick={(e) => showComments(e)}>
+          <span className={styles.commentsBtn} id={p.id} onClick={(e) => showComments(e)}>
             Comments
           </span>
-          <CommentsContanier postId={p.id} isShow={props.isShow} />
+          {props.isOpen ? <CommentsContanier  postId={props.postId}/> : null} 
         </div>
       ))}
     </div>
@@ -31,3 +34,7 @@ const Posts = (props) => {
 };
 
 export default Posts;
+
+
+
+
