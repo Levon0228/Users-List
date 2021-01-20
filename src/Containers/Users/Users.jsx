@@ -5,15 +5,13 @@ import { Link } from "react-router-dom";
 import styles from "./Users.module.css";
 
 const Users = (props) => {
-  const handleClick = (e, data) => props.setContext(data);
-  const users = props.users;
-  console.log("users", users)
+  const { users } = props;
   return (
     <div className={styles.usersContanier}>
       <h1>Users</h1>
       {users.map((u) => (
         <Link to={`/posts?userId=${u.id}`} key={u.id}>
-          <div className={styles.user} onClick={(e) => handleClick(e, u)}>
+          <div className={styles.user}>
             {u.name}
           </div>
         </Link>

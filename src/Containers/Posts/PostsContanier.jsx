@@ -1,19 +1,15 @@
 /** @format */
 
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, } from "react";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
 import { API_URL } from "../../config/index";
-import Posts from "./Posts";
+import Post from "./Post";
+import styles from "./Posts.module.css";
 
 const PostsContanier = () => {
   const [posts, setPosts] = useState([]);
   const { search } = useLocation();
-  const [postId, setpostId] = useState(null);
-  const [isOpen, setisOpen] = useState(false);
-
-
-
   useEffect(() => {
     (async () => {
       const result = await axios(`${API_URL}/posts${search}`);
@@ -21,7 +17,12 @@ const PostsContanier = () => {
     })();
   }, []);
   return (
-    <Posts posts={posts} isOpen={isOpen} setisOpen={setisOpen} setPosts={setPosts} postId={postId} setpostId={setpostId} />
+    <div className={styles.postsContanier}>
+      <h1> Posts List</h1>
+      {posts.map((p) => (
+        <Post post={p} key={p.id} />
+      ))}
+    </div>
   );
 };
 
