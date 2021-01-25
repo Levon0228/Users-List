@@ -18,6 +18,7 @@ const AddEditModalContanier = (props) => {
     if (isSend) {
       (async () => {
         const result = await axios.post(`${API_URL}/posts`, sendData);
+
         props.setPosts([...props.posts, result.data]);
         setIsSend(false);
       })();
@@ -27,7 +28,7 @@ const AddEditModalContanier = (props) => {
         const update = await axios.patch(
           `${API_URL}/posts/${post.id}`,
           updatedData
-        );
+          );
         const index = props.posts.findIndex((el) => el.id === update.data.id);
         props.posts[index] = update.data;
         props.setPosts([...props.posts]);
