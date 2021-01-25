@@ -6,11 +6,15 @@ import { useLocation } from "react-router-dom";
 import { API_URL } from "../../config/index";
 import Post from "./Post";
 import AddEditModalContanier from "./AddPost/AddEditModalContanier";
+import DeleteModalContanier from "./DeleteModal/DeleteModalContanier";
 import styles from "./Posts.module.css";
 
 const PostsContanier = () => {
   const [posts, setPosts] = useState([]);
+  const [post, setPost] = useState([]);
   const [modalIsOpen, setIsOpen] = useState(false);
+  const [deleteModalIsOpen, setIsOpenDeleteModal] = useState(false);
+  const [isEdit, setIsEdit] = useState(false);
   const { search } = useLocation();
   const userId = search.substr(search.indexOf("=") + 1, search.length);
   useEffect(() => {
@@ -19,8 +23,8 @@ const PostsContanier = () => {
       setPosts(result.data);
     })();
   }, []);
-
   const openModal = () => setIsOpen(true);
+  const openDeleteModal = () => setIsOpenDeleteModal(true)
 
   return (
     <div className={styles.postsContanier} id="postsContanier">
@@ -28,6 +32,16 @@ const PostsContanier = () => {
         userId={userId}
         modalIsOpen={modalIsOpen}
         setIsOpen={setIsOpen}
+        setPosts={setPosts}
+        posts={posts}
+        setIsEdit={setIsEdit}
+        isEdit={isEdit}
+        post={post}
+      />
+      <DeleteModalContanier
+        setIsOpenDeleteModal={setIsOpenDeleteModal}
+        deleteModalIsOpen={deleteModalIsOpen}
+        post={post}
         setPosts={setPosts}
         posts={posts}
       />
@@ -48,7 +62,7 @@ const PostsContanier = () => {
           </thead>
           <tbody>
             {posts.map((p) => (
-              <Post post={p} key={p.id} />
+              <Post setIsEdit={setIsEdit} setPost={setPost} openDeleteModal={openDeleteModal} openModal={openModal} post={p} key={p.id} />
             ))}
           </tbody>
         </table>

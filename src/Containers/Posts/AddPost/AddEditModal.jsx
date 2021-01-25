@@ -6,14 +6,18 @@ import Modal from "react-modal";
 
 const AddEditModal = (props) => {
   Modal.setAppElement(document.getElementById("modalContanier"));
-
-  const afterOpenModal = () => {
-    console.log("modal IS OPENED");
+  const { isEdit } = props;
+  const { post } = props;
+  const closeModal = () => {
+    props.setIsOpen(false);
+    props.setIsEdit(false);
   };
 
-  const closeModal = () => props.setIsOpen(false);
-
-  const handlerKeyDown = () => {
+  const changeHandler = (e) => {
+    const { target } = e;
+    const { name } = target;
+    const { value } = target;
+    const { updatedData } = props;
     const elems = document.querySelectorAll(".validate");
     const button = document.getElementById("publish");
     for (const elem of elems) {
@@ -24,14 +28,19 @@ const AddEditModal = (props) => {
         return;
       }
     }
+    props.setUpdatedData({ ...updatedData, ...{ [name]: value } });
   };
 
   const publishPost = () => {
     const newPostBody = document.getElementById("newPostBody");
     const newPostTitle = document.getElementById("newPostTitle");
     const userId = Number(props.userId);
-    props.setSendData({ body: newPostBody.value, title: newPostTitle.value, userId });
-    props.setIsSend(true);
+    props.setSendData({
+      body: newPostBody.value,
+      title: newPostTitle.value,
+      userId,
+    });
+    isEdit ? props.setIsUpdate(true) : props.setIsSend(true);
     closeModal();
   };
 
@@ -39,24 +48,27 @@ const AddEditModal = (props) => {
     <div id="modalContanier">
       <Modal
         isOpen={props.modalIsOpen}
-        onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
         className={styles.modal}>
-        <h3>Addind New Post</h3>
+        {isEdit ? <h3>Edit Post</h3> : <h3>Addind New Post</h3>}
         <input
           type="text"
           id="newPostTitle"
           className={`${styles.postTitle} validate`}
           placeholder="Post Title"
-          onKeyUp={handlerKeyDown}
+          onChange={changeHandler}
+          defaultValue={isEdit ? post.title : null}
+          name="title"
         />
         <textarea
           rows="5"
           cols="33"
           id="newPostBody"
+          name="body"
           className={`${styles.postBody} validate`}
           placeholder="Post Body"
-          onKeyUp={handlerKeyDown}></textarea>
+          defaultValue={isEdit ? post.body : null}
+          onChange={changeHandler}></textarea>
         <div className={styles.buttonsContanier}>
           <button
             onClick={publishPost}

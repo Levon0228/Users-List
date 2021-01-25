@@ -12,7 +12,6 @@
   width: 630px;
   outline: none;
   box-shadow: 0 10px 6px -6px #777;
-  
 }
 .postTitle {
   display: block;
@@ -24,7 +23,7 @@
 }
 
 .postBody {
-  display: block; 
+  display: block;
   resize: none;
   margin: 0 auto;
   width: 500px;
@@ -33,10 +32,10 @@
   margin-bottom: 20px;
 }
 
-h3 {
+h3,
+.text {
   margin: 0 auto;
   width: 500px;
-  text-align: left;
   margin-bottom: 20px;
 }
 
@@ -54,30 +53,27 @@ h3 {
   text-decoration: none;
   display: inline-block;
   margin: 4px 0px;
-  cursor: pointer;
-  transition-duration: 0.4s;
   width: 80px;
   height: 30px;
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-
 .Btn:hover {
   cursor: pointer;
   color: black;
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.3), 0 6px 20px 0 rgba(0,0,0,0.3);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.3);
 }
 
-.publishBtn {
+.deleteBtn {
   margin-right: 20px;
 }
-textarea:focus, input:focus{
+textarea:focus,
+input:focus {
   outline: none;
 }
 ::placeholder {
   font-size: 15px;
-  font-family: source-code-pro
+  font-family: source-code-pro;
 }
-
 
 .disabled {
   pointer-events: none;
