@@ -8,10 +8,12 @@ import Post from "./Post";
 import AddEditModalContanier from "./AddPost/AddEditModalContanier";
 import DeleteModalContanier from "./DeleteModal/DeleteModalContanier";
 import styles from "./Posts.module.css";
+// Todo destructure props in all files
 
+// Todo rename Contanier to Container to all files
 const PostsContanier = () => {
   const [posts, setPosts] = useState([]);
-  const [post, setPost] = useState([]);
+  const [post, setPost] = useState([]); // Todo set post initial value to null, not empty array
   const [modalIsOpen, setIsOpen] = useState(false);
   const [deleteModalIsOpen, setIsOpenDeleteModal] = useState(false);
   const [isEdit, setIsEdit] = useState(false);

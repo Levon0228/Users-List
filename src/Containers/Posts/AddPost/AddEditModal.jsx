@@ -4,6 +4,9 @@ import React from "react";
 import styles from "./AddEditModal.module.css";
 import Modal from "react-modal";
 
+// Todo do not use document.getElementById, .querySelectorAll methods, this is React,  not Jquery :)
+// Todo refactor changeHandler, publishPost functions
+
 const AddEditModal = (props) => {
   Modal.setAppElement(document.getElementById("modalContanier"));
   const { isEdit } = props;

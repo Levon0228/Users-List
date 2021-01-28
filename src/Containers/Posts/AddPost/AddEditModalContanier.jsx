@@ -30,7 +30,7 @@ const AddEditModalContanier = (props) => {
           updatedData
           );
         const index = props.posts.findIndex((el) => el.id === update.data.id);
-        props.posts[index] = update.data;
+        props.posts[index] = update.data; // Todo do not update props posts, create new posts array and update it
         props.setPosts([...props.posts]);
         setIsUpdate(false);
         setUpdatedData({})
