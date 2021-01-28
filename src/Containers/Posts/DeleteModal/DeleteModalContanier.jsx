@@ -13,7 +13,7 @@ const DeleteModalContanier = (props) => {
       (async () => {
         await axios.delete(`${API_URL}/posts/${post.id}`);
         const index = props.posts.findIndex((el) => el.id === post.id);
-        const a = props.posts.splice(index,1)
+        props.posts.splice(index,1)
         props.setPosts([...props.posts]);
         setisDelete(false);
       })();

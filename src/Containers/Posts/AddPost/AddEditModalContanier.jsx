@@ -33,6 +33,7 @@ const AddEditModalContanier = (props) => {
         props.posts[index] = update.data;
         props.setPosts([...props.posts]);
         setIsUpdate(false);
+        setUpdatedData({})
       })();
     }
   }, [isSend, isUpdate]);
