@@ -3,6 +3,7 @@
 import React from "react";
 import styles from "./Comments.module.css";
 
+// Todo destructure props
 const Comments = (props) => {
   const { comments } = props;
   if (comments.length) {
@@ -22,7 +23,7 @@ const Comments = (props) => {
         ))}
       </>
     );
-  } else {
+  } else { // Todo else block not necessary, simple return
     return (
       <tr className={styles.comments}>
         <td></td>

@@ -5,7 +5,7 @@ import styles from "./DeleteModal.module.css";
 import Modal from "react-modal";
 
 const DeleteModal = (props) => {
-  Modal.setAppElement(document.getElementById("deleteModalContanier"));
+  Modal.setAppElement(document.getElementById("deleteModalContanier")); // Todo what this?
 
   const closeModal = () => {
     props.setIsOpenDeleteModal(false)
@@ -23,7 +23,7 @@ const DeleteModal = (props) => {
         isOpen={props.deleteModalIsOpen}
         onRequestClose={closeModal}
         className={styles.modal}>
-        <h3>Delete Popup</h3> 
+        <h3>Delete Popup</h3>
         <div className={styles.text}>Are you sure you want to delete the post</div>
         <div className={styles.buttonsContanier}>
           <button
