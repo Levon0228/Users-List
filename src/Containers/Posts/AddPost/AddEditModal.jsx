@@ -28,10 +28,7 @@ const AddEditModal = (props) => {
         return;
       }
     }
-    const a = { ...updatedData, ...{ [name]: value } }
-    console.log(a)
-
-    props.setUpdatedData(a);
+    props.setUpdatedData({ ...updatedData, ...{ [name]: value } });
   };
 
   const publishPost = () => {
